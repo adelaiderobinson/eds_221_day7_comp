@@ -7,6 +7,7 @@ editor: visual
 ```{r}
 library(tidyverse)
 library(palmerpenguins)
+library(lubridate)
 
 ```
 
@@ -85,4 +86,76 @@ sub <- penguins |>
   mutate(body_mass_kg = body_mass_g /1000) |> 
   rename(location = island)
 
+```
+
+# 
+
+# Dates and times with lubridate
+
+```{r}
+my_date <- "03 - 15- 1998"
+
+lubridate::mdy(my_date) #converts to iso 8601
+
+my_date2 <- "11/7/2003"
+dmy(my_date2)
+ 
+
+mydate3 <- "08-Jun-1974"
+dmy(mydate3)
+
+mydat4 <- "19610518"
+ymd(mydat4)
+
+mydate5 <- "august, 1st, 2022"
+mdy(mydate5)
+
+class(mdy(mydate5))
+```
+
+Break it
+
+```{r}
+mdy("1942-08-30")
+#doesn't make sense for imput 
+
+dmy("09/22/84")
+
+
+```
+
+add some times
+
+```{r}
+time <- "2020-08-12 11:18"
+time <- ymd_hm(time)
+class(time)
+```
+
+```{r}
+with_tz(time, "America/Los_Angeles") #convert between time zone
+
+with_tz(time, "Australia/Brisbane")
+
+# pull pieces
+my_time <- ymd_hms(time)
+
+year(my_time)
+day(my_time)
+month(my_time)
+
+hour(my_time)
+minute(my_time)
+#allows you to say add a new column that only contains the month
+
+
+```
+
+```{r}
+tedd_bday <- ymd("20170615")
+wday(tedd_bday, label = TRUE)
+
+bday <- mdy("12/28/1992")
+wday(bday, label = TRUE)
+week(bday)
 ```
