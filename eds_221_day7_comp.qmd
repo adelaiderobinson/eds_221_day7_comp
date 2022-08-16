@@ -8,6 +8,7 @@ editor: visual
 library(tidyverse)
 library(palmerpenguins)
 library(lubridate)
+library(stringr)
 
 ```
 
@@ -187,4 +188,75 @@ time_interval <- interval(day1, day2)
 time_length(time_interval, "year")
 
 time_length(time_interval, "day")
+```
+
+# Stringr for working with strings
+
+str_detect
+
+```{r}
+my_string <- "Teddy loves eating salmon and socks"
+
+my_string |> 
+  str_detect("pup")
+
+my_string <- c("burrito", "fish taco", "taco salad")
+
+my_string |> str_detect("fish")
+
+#create a subset where we case rows
+skywalkers <- starwars |> filter(str_detect(name, pattern = "Skywalker"))
+
+maul <- starwars |> filter(str_detect(name, "Maul"))
+
+blue <- starwars |> filter(str_detect(eye_color, "blue"))
+
+
+```
+
+### str_replace
+
+```{r}
+fire_walkers <- starwars |> 
+  mutate(name_2 = str_replace(name, pattern = "Sky", 
+                              replacement = "Fire"))
+
+
+```
+
+#string squish
+
+```{r}
+feedback <- c("  I ate    some    nachos", "Wednesday   morning")
+str_trim(feedback)
+
+str_squish(feedback)
+
+#capitalization 
+#str_to
+str_to_lower(feedback)
+str_to_upper(feedback)
+str_to_title(feedback)
+str_to_sentence(feedback)
+```
+
+from starwars create a new data frame called starwars_lc that adds new col called name_lower containing character all lowe
+
+```{r}
+
+starwars_lc <- starwars |> mutate(name_lower = str_to_lower(name))
+
+```
+
+## mutate and case when
+
+```{r}
+
+robot <- starwars |> 
+  mutate(robot_status = case_when(
+    species == "Droid"~ "A Robot",
+    species == "Human"~ "It's a human",
+    TRUE ~"This is something else"
+    ))
+
 ```
