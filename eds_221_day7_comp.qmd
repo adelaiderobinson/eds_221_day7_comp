@@ -159,3 +159,32 @@ bday <- mdy("12/28/1992")
 wday(bday, label = TRUE)
 week(bday)
 ```
+
+```{r}
+urchin_counts <- tribble(
+  ~date, ~species, ~size_mm,
+  "10/3/2020","purple", 55,
+  "10/4/2020", "red", 48,
+  "11/17/2020", "red", 67)
+#how many were seen each month
+#parse so you can look at them separately 
+urchin_ymd <- urchin_counts |> 
+  mutate(date = mdy(date)) |> 
+  mutate(year = year(date), month = month(date), day(date))
+
+class(urchin_ymd$date)
+
+```
+
+#find intervals
+
+```{r}
+day1 <- ymd("2020-01-06")
+day2 <- ymd("2020-05-18")
+
+time_interval <- interval(day1, day2)
+
+time_length(time_interval, "year")
+
+time_length(time_interval, "day")
+```
