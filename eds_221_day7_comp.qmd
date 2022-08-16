@@ -4,14 +4,85 @@ format: html
 editor: visual
 ---
 
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+
+```
+
 ## Joins
+
+data pasta, addins, paste as tribble
+
+```{r}
+animals <- tibble::tribble(
+             ~location,   ~species,  ~maturity,
+              "lagoon",   "bobcat",    "adult",
+               "bluff",   "coyote", "juvenile",
+               "creek",      "fox",    "adult",
+                "oaks", "squirrel", "juvenile",
+               "bluff",   "bobcat",    "adult"
+             )
+sites <- tibble::tribble(
+           ~location,      ~full_site_name, ~jurisdiction,
+             "beach",       "Goleta Beach",     "SB City",
+            "lagoon",        "UCSB Lagoon",        "UCSB",
+             "bluff",       "Ellwood Mesa",     "SB City",
+              "oaks", "Fremont Campground",        "USFS"
+           )
+
+```
 
 ### full join
 
+```{r}
+full_join_example <- full_join(animals,sites, by = "location")
+
+#if the key has different name by location by = c("a" = "b")
+weird <- full_join(animals, sites, by = c("location" = "jurisdiction"))
+
+```
+
 ### Left Join
+
+```{r}
+left_example <- left_join(animals, sites, by = "location")
+
+```
 
 ### inner join
 
+```{r}
+inner_example <- inner_join(animals, sites, by = "location")
+sites_2 <- inner_example |> rename(loc = location)
+
+```
+
+```{r}
+non_matching <- full_join(animals, sites_2, by = c("location" = "loc"))
+```
+
+# Filtering Joins
+
 ### semi join
 
+```{r}
+semi_join_example <- semi_join(animals, sites)
+```
+
 ### anti join
+
+```{r}
+anti_join <- anti_join(animals, sites, by = "location")
+```
+
+you can set up a database connection w/ db connect in sql or r
+
+```{r}
+sub <- penguins |> 
+  filter(island %in% c("Biscoe", "Dream")) |> 
+  select(-year,-sex) |> 
+  mutate(body_mass_kg = body_mass_g /1000) |> 
+  rename(location = island)
+
+```

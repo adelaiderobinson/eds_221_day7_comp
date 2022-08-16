@@ -3,7 +3,7 @@
     "path": "~/Documents/MEDS/EDS 221/day_7/eds_221_day7_comp/eds_221_day7_comp.qmd",
     "project_path": "eds_221_day7_comp.qmd",
     "type": "quarto_markdown",
-    "hash": "578500504",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1660669534519.0,
@@ -15,18 +15,18 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "17,0",
+        "cursorPosition": "87,0",
         "scrollLine": "0",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "rmdVisualModeLocation": "129:0"
+        "rmdVisualModeLocation": "1716:1230"
     },
     "folds": "",
-    "lastKnownWriteTime": 1660669643,
+    "lastKnownWriteTime": 1660672871,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1660669643714,
+    "last_content_update": 1660672871223,
     "read_only": false,
     "read_only_alternatives": []
 }
