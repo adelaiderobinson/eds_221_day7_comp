@@ -1,0 +1,17 @@
+---
+title: "joins_strings_dates"
+format: html
+editor: visual
+---
+
+## Joins
+
+### full join
+
+### Left Join
+
+### inner join
+
+### semi join
+
+### anti join
